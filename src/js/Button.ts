@@ -1,4 +1,4 @@
-import { Actor, Color, Engine, Font, FontUnit, Label, Vector } from "excalibur";
+import { Actor, BaseAlign, Color, Engine, Font, FontUnit, Label, TextAlign, Vector } from "excalibur";
 
 export class Button extends Actor {
     label: Label
@@ -28,8 +28,10 @@ export class Button extends Actor {
             pos: new Vector(0, 0),
             font: new Font({
                 family: 'monospace',
-                size: 24,
+                size: 16,
                 unit: FontUnit.Px,
+                textAlign: TextAlign.Center,
+                baseAlign: BaseAlign.Middle
             }),
             anchor: new Vector(0,0)
         })
