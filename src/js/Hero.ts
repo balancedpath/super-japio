@@ -1,5 +1,5 @@
 import { Actor, CollisionType, Color, Engine, Input, Vector } from "excalibur"
-import { Game } from "./Game"
+import { Game } from "./game";
 
 export class Hero extends Actor {
 
@@ -10,13 +10,13 @@ export class Hero extends Actor {
     private speedMulitplier: number
     private hasArmor: boolean
     private startPos: Vector
-    game: Game
+    private game: Game
 
     constructor(game: Game, startHeight: number = 200) {
         super({
             width: 15,
             height: 25,
-            color: Color.Azure
+            color: Color.Red
         })
         this.game = game
 
@@ -51,7 +51,7 @@ export class Hero extends Actor {
         }
 
         if(this.game.input.keyboard.isHeld(Input.Keys.Up) && this.onGround) {
-            this.vel.y = -200;
+            this.vel.y = -100;
             this.onGround = false;
             // Resources.jump.play(.1);
         }

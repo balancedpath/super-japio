@@ -1,6 +1,6 @@
-import { Actor, CollisionType, Engine, Vector } from "excalibur";
+import { Actor, CollisionType, Engine, ImageSource, Vector } from "excalibur";
 import { Resources } from "./resources";
-import { Game } from "./Game";
+import { Game } from "./game";
 
 export class Pear extends Actor {
     enableCapturePointer: boolean;
@@ -12,25 +12,33 @@ export class Pear extends Actor {
             height: Resources.Pear.height,
         })
         this.game = game
+        this.game.add(this)
+
+    }
+
+    onInitialize(_engine: Engine): void {
         this.graphics.use(Resources.Pear.toSprite())
 
         this.pos = this.getRandomVector()
 
         this.body.collisionType = CollisionType.Active;
-        this.on('collisionstart', this.bounce)
+        this.on('collisionstart', (event) => this.bounce())
 
-        // this.enableCapturePointer = true
-        // this.pointer.useGraphicsBounds = true
-        // this.on("pointerup", (event) => this.pearClicked())
-        // this.on("exitviewport", (event) => this.resetPosition())
+        this.enableCapturePointer = true
+        this.pointer.useGraphicsBounds = true
+        this.on("pointerup", (event) => this.pearClicked())
+        this.on("exitviewport", (event) => this.resetPosition())
 
-        this.game.add(this)
+    }
+
+    onPreUpdate(_engine: Engine, _delta: number): void {
+        
     }
 
     private bounce(){
         console.log('bounce');
-        
-        this.vel = new Vector(0, -4000)
+        this.game.increaseScore(-100)
+        this.resetPosition
     }
 
     private getRandomVector(){
@@ -40,7 +48,7 @@ export class Pear extends Actor {
         )
     }
 
-    pearClicked() {
+    private pearClicked() {
         Resources.BlingSound.play()
         this.game.increaseScore(100)
         this.resetPosition()

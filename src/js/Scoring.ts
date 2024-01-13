@@ -1,6 +1,6 @@
 import { Actor, Font, FontUnit, Label, Vector } from "excalibur";
 import { Resources } from "./resources";
-import { Game } from "./Game";
+import { Game } from "./game";
 
 export class Scoring extends Actor {
 
