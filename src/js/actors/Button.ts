@@ -22,6 +22,8 @@ export class Button extends Actor {
         this.enableCapturePointer = true
         this.pointer.useGraphicsBounds = true
         this.on("pointerup", (event) => this.onClickCallback())
+        this.on("pointerenter", (event) => this.pointerEnter())
+        this.on("pointerleave", (event) => this.pointerLeave())
 
         this.label = new Label({
             text: this.labelText,
@@ -36,6 +38,14 @@ export class Button extends Actor {
             anchor: new Vector(0,0)
         })
         this.addChild(this.label)
+
+
+    }
+    private pointerLeave(): void {
+        super.color = Color.Green
+    }
+    private pointerEnter(): void {
+        super.color = Color.Red
     }
 
     // add on click behaviour

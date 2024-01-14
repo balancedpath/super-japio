@@ -1,7 +1,7 @@
 import { Engine, Scene, Vector } from "excalibur";
-import { Game } from "./game";
-import { Background } from "./Background";
-import { Button } from "./Button";
+import { Game } from "../game";
+import { Background } from "../actors/Background";
+import { Button } from "../actors/Button";
 
 export class MainMenu extends Scene {
     private game: Game
@@ -35,10 +35,12 @@ export class MainMenu extends Scene {
     }
 
     private displayScores() {
-
+        console.error('not implemented');
+        
     }
 
     private displaySettings(){
+        console.error('not implemented');
 
     }
 }

@@ -1,6 +1,6 @@
 import { Actor, Engine, Vector } from "excalibur";
-import { Resources } from "./resources";
-import { Game } from "./game";
+import { Resources } from "../resources";
+import { Game } from "../game";
 
 export class Background extends Actor {
     constructor(game: Game) {

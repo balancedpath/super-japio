@@ -1,5 +1,5 @@
 import { Actor, CollisionType, Color, Engine, Input, Vector } from "excalibur"
-import { Game } from "./game";
+import { Game } from "../game";
 
 export class Hero extends Actor {
 

@@ -1,6 +1,6 @@
 import { Actor, CollisionType, Engine, ImageSource, Vector } from "excalibur";
-import { Resources } from "./resources";
-import { Game } from "./game";
+import { Resources } from "../resources";
+import { Game } from "../game";
 
 export class Pear extends Actor {
     enableCapturePointer: boolean;
