@@ -32,7 +32,7 @@ export class Hero extends Actor {
         this.game.add(this)
 
         this.on('collisionstart', () => {
-            console.log('colission');
+            console.log('hero colission');
             
         })
     }
@@ -51,7 +51,7 @@ export class Hero extends Actor {
         }
 
         if(this.game.input.keyboard.isHeld(Input.Keys.Up) && this.onGround) {
-            this.vel.y = -100;
+            this.vel.y = -300;
             this.onGround = false;
             // Resources.jump.play(.1);
         }

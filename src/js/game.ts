@@ -1,18 +1,16 @@
 import '../css/style.css'
-import { Actor, Axis, DisplayMode, Engine, Physics, Vector } from "excalibur"
+import { DisplayMode, Engine, Physics, Vector } from "excalibur"
 import { ResourceLoader } from './resources.js'
-import { Background } from './actors/Background.ts'
-import { Pear } from './actors/Pear.ts'
-import { Scoring } from './actors/Scoring.ts'
-import { Platform } from './actors/Platform.ts'
-import { Hero } from './actors/Hero.ts'
 import { MainMenu } from './scenes/MainMenu.ts'
+import { Scores } from './scenes/Scores.ts'
+import { Settings } from './scenes/Settings.ts'
+import { LevelForest } from './scenes/LevelForest.ts'
 
 // https://github.com/HR-CMGT/PRG04-2022-2023/tree/main
 // https://opengameart.org/
 
 export class Game extends Engine {
-    private scoring: Scoring
+    // TODO: change to UI class
 
     constructor() {
         super({ 
@@ -22,34 +20,33 @@ export class Game extends Engine {
         })
         
         Physics.useArcadePhysics()
-        Physics.acc = new Vector(0, 100)
+        Physics.acc = new Vector(0, 1000)
+        console.warn("maybe change accelator vector? might be too slogish?");
 
         this.start(ResourceLoader).then(() => this.startGame())
     }
     
     startGame() {
 
-        const mainMenu = new MainMenu(this)
-        this.add('mainmenu', mainMenu)
+        const mainMenuScene = new MainMenu(this)
+        // const scoringScene = new Scores() 
+        // const settingsScene = new Settings() 
+        
+        const levelForest = new LevelForest(this)
+
+
+        // Initialize and add all scenes
+        this.add('mainmenu', mainMenuScene)
+        // this.add('scores', scoringScene)
+        // this.add('settings', settingsScene)
+
+        this.add('levelForest', levelForest)
+        // this.add('levelSnow', levelSnow)
+        // this.add('levelCastle', levelCastle)
+        
 
         this.goToScene('mainmenu')
         
-        // const bg = new Background(this)
-        
-        // const platform = new Platform(this)
-        // const hero = new Hero(this)
-        
-        // this.scoring = new Scoring(this)
-        // const pear = new Pear(this)
-        
-        // this.currentScene.camera.strategy.lockToActorAxis(hero, Axis.X)
-            
-            // this.currentScene.camera.shake(10, 5, 1000)
-
-    }
-
-    increaseScore(deltaScore: number) {
-        this.scoring.increaseScore(deltaScore)
     }
 }
 

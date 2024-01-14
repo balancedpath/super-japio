@@ -1,5 +1,5 @@
 import { Actor, CollisionType, Color, Vector } from "excalibur";
-import { Game } from "../Game";
+import { Game } from "../game";
 
 export class Platform extends Actor {
     
@@ -7,7 +7,7 @@ export class Platform extends Actor {
 
     constructor(game: Game, platformHeight: number = 50) {
         super({
-            width: game.drawWidth,
+            width: game.drawWidth * 3,
             height: platformHeight,
             color: Color.Chartreuse,
             anchor: new Vector(0, 0)

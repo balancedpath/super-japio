@@ -37,7 +37,7 @@ export class Pear extends Actor {
 
     private bounce(){
         console.log('bounce');
-        this.game.increaseScore(-100)
+        // this.game.increaseScore(-100)
         this.resetPosition
     }
 

@@ -18,9 +18,9 @@ export class MainMenu extends Scene {
 
         const xMiddle = this.game.drawWidth / 2
 
-        const startButton = new Button(this.startGame, "Start Game", new Vector(xMiddle, 100))
-        const scoreButton = new Button(this.displayScores, "Scores", new Vector(xMiddle, 200))
-        const settingsButton = new Button(this.displaySettings, "Settings", new Vector(xMiddle, 300))
+        const startButton = new Button(this.startGamePressed.bind(this), "Start Game", new Vector(xMiddle, 100))
+        const scoreButton = new Button(this.displayScoresPressed.bind(this), "Scores", new Vector(xMiddle, 200))
+        const settingsButton = new Button(this.displaySettingsPressed.bind(this), "Settings", new Vector(xMiddle, 300))
 
         this.add(startButton)
         this.add(scoreButton)
@@ -28,18 +28,20 @@ export class MainMenu extends Scene {
 
     }
 
-    private startGame() {
+    private startGamePressed() {
         // set scene level1
-        console.log('load level 1');
+        console.log("Loading level 1");
+        
+        this.game.goToScene('levelForest')
         
     }
 
-    private displayScores() {
+    private displayScoresPressed() {
         console.error('not implemented');
         
     }
 
-    private displaySettings(){
+    private displaySettingsPressed(){
         console.error('not implemented');
 
     }
